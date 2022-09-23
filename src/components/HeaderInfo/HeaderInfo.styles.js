@@ -58,7 +58,7 @@ const HeaderSIh3 = styled.h2`
 
 const HeaderSIp = styled.p`
   overflow-wrap: break-word;
-  max-width: 10ch;
+  max-width: 12ch;
   font-size: 1.8em;
   line-height: 1.6;
   font-weight: 600;
