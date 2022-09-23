@@ -11,10 +11,10 @@ const Header = ({ data, handleChangeData }) => {
         <h1>IP Address Tracker</h1>
         <ControledInput handleChangeData={handleChangeData} />
         <HeaderInfo
-          ipAdress={data.ip ? data.ip : "N/A"}
-          location={data.name ? data.name : "N/A"}
-          timezone={data.timezone ? data.timezone : "N/A"}
-          ISP={data.isp ? data.isp : "N/A"}
+          ipAdress={data.ip}
+          location={data.name}
+          timezone={data.timezone}
+          ISP={data.isp}
         />
       </InputSection>
     </HeaderWrapper>

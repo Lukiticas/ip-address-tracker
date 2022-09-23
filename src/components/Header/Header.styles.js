@@ -6,9 +6,10 @@ const HeaderWrapper = styled.div`
   display: grid;
   place-items: center;
   position: relative;
+  font-size: 0.8rem;
 
   @media screen and (max-width: 700px) {
-    height: 20rem;
+    height: 19rem;
   }
 `;
 
@@ -19,8 +20,6 @@ const HeaderImg = styled.img`
   height: 100%;
   object-fit: cover;
   inset: 0;
-
-  filter: ${(props) => (props.theme.title === "dark" ? "grayscale(100%)" : "")};
 `;
 
 const InputSection = styled.section`
@@ -33,7 +32,6 @@ const InputSection = styled.section`
   padding: 2rem;
   margin: 1rem 0;
   z-index: 10000000;
-  text-align: center;
 
   bottom: 100%;
   transform: translateY(100%);
@@ -43,10 +41,11 @@ const InputSection = styled.section`
   }
 
   & > h1 {
+    text-align: center;
     font-family: ${(props) => props.theme.font.family};
     color: ${(props) =>
       props.theme.title === "dark"
-        ? props.theme.colors.clr600
+        ? props.theme.colors.clr800
         : props.theme.colors.clr400};
     font-size: 2em;
     font-weight: 500;

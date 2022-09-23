@@ -1,10 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
-
 import { CIButton, CIForm, CIInput } from "./ControledInput.styles";
 import Arrow from "/images/icon-arrow.svg";
-
-const API_KEY = import.meta.env.VITE_GEOAPI_KEY;
 
 const ControledInput = ({ handleChangeData, ...args }) => {
   const [inputValue, setInputValue] = useState("");
@@ -13,36 +9,11 @@ const ControledInput = ({ handleChangeData, ...args }) => {
     setInputValue(evt.target.value);
   };
 
-  const requestAPI = async (ip) => {
-    try {
-      const URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}&ipAddress=${ip}`;
-
-      const response = await axios.get(URL);
-      const data = response.data;
-
-      handleChangeData({
-        ip: data.ip,
-        location: [data.location.lat, data.location.lng],
-        name: `${data.location.city}, ${data.location.region} - ${data.location.country}`,
-        timezone: data.location.timezone,
-        isp: data.isp,
-      });
-    } catch (err) {
-      handleChangeData({
-        ip: `code: ${err.response.status}`,
-        location: [0, 0],
-        name: `Invalid IP: ${inputValue}`,
-        timezone: "N/A",
-        isp: "N/A",
-      });
-    }
-  };
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
     if (inputValue.length || inputValue.length > 3) {
       const data = new FormData(evt.target).get("IP");
-      requestAPI(data);
+      handleChangeData(data);
     } else {
       evt.target[0].setCustomValidity("Invalid Value");
       return;

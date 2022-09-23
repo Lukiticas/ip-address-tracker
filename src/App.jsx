@@ -11,27 +11,49 @@ import { ThemeProvider } from "styled-components";
 import dark from "./styles/themes/dark";
 import light from "./styles/themes/light";
 
+const API_KEY = import.meta.env.VITE_GEOAPI_KEY;
+
 const App = () => {
   const [theme, setTheme] = usePersistedState("theme", light);
   const [data, setData] = useState({
-    ip: "",
-    location: [0, 0],
-    name: "",
+    ip: "Your Ip",
+    location: [35.652832, 139.839478],
+    name: "Tokyo",
     timezone: "",
     isp: "",
+    zoom: 3,
   });
+
+  const requestAPI = async (ip) => {
+    try {
+      const URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}&ipAddress=${ip}`;
+      const response = await axios.get(URL);
+      const data = response.data;
+
+      setData({
+        ip: data.ip,
+        location: [data.location.lat, data.location.lng],
+        name: `${data.location.city}, ${data.location.region} - ${data.location.country}`,
+        timezone: data.location.timezone,
+        isp: data.isp,
+        zoom: 15,
+      });
+    } catch (err) {
+      console.log(err);
+      setData({
+        ip: `${ip}`,
+        location: [0, 0],
+        name: `Invalid IP`,
+        timezone: "N/A",
+        isp: `code: ${err.response.status}`,
+        zoom: 3,
+      });
+    }
+  };
 
   const getUserLocation = async () => {
     const res = await axios.get("https://geolocation-db.com/json/");
-    const { data } = res;
-
-    setData({
-      ip: data.IPv4,
-      location: [data.latitude, data.longitude],
-      name: `${data.city}, ${data.state} - ${data.country_code}`,
-      timezone: "N/A",
-      isp: "N/A",
-    });
+    requestAPI(res.data.IPv4);
   };
 
   const toggleTheme = () => {
@@ -47,8 +69,8 @@ const App = () => {
       <GlobalStyle />
 
       <div className="App">
-        <Header data={data} handleChangeData={setData} />
-        <IPMap coords={data.location} />
+        <Header data={data} handleChangeData={requestAPI} />
+        <IPMap coords={data.location} zoom={data.zoom} />
         <Toggle handleToggle={toggleTheme} />
       </div>
     </ThemeProvider>

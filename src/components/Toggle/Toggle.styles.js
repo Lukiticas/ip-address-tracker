@@ -4,8 +4,8 @@ const ToggleWrapper = styled.div`
   position: fixed;
   max-width: 2rem;
 
-  bottom: 5%;
-  right: 5%;
+  bottom: 1rem;
+  right: 3rem;
 
   z-index: 10000000;
 

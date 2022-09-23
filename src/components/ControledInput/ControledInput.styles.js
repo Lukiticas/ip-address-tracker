@@ -4,15 +4,15 @@ const CIForm = styled.form`
   position: relative;
   display: flex;
 
-  height: 3.5rem;
-  width: clamp(6rem, 100%, 40rem);
+  height: 3.8em;
+  width: clamp(6em, 100%, 40em);
 
   flex-direction: row nowrap;
   align-items: center;
 
   overflow: hidden;
 
-  border-radius: 1rem;
+  border-radius: 0.8rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   &:hover,
@@ -24,15 +24,18 @@ const CIForm = styled.form`
 `;
 
 const CIInput = styled.input`
-  font-size: 1.1rem;
   height: 100%;
   width: 100%;
+  font-size: 1.2em;
 
   outline: none;
   border: none;
 
   padding: 2rem;
-  color: ${(props) => props.theme.colors.clr800};
+  color: ${(props) =>
+    props.theme.title === "dark"
+      ? props.theme.colors.clr400
+      : props.theme.colors.clr600};
 
   :placeholder {
     color: ${(props) => props.theme.colors.clr600};

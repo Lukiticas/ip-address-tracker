@@ -3,17 +3,20 @@ import { MapSection } from "./IPMap.styles";
 import "leaflet/dist/leaflet.css";
 import * as L from "leaflet";
 
-const MapControl = ({ coords }) => {
+const MapControl = ({ coords, zoom }) => {
   const map = useMap();
   map.setView(coords);
+  map.setZoom(zoom);
   return null;
 };
 
-const IPMap = ({ coords }) => {
+const IPMap = ({ coords, zoom }) => {
   const [x, y] = coords;
 
   const Icon = new L.Icon({
     iconUrl: "/images/icon-location.svg",
+    iconSize: [27, 45],
+    iconAnchor: [27, 55],
   });
 
   return (
@@ -21,10 +24,10 @@ const IPMap = ({ coords }) => {
       <MapContainer
         className="country-map"
         center={[x, y]}
-        zoom={15}
+        zoom={zoom}
         scrollWheelZoom={true}
       >
-        <MapControl coords={coords} />
+        <MapControl coords={coords} zoom={zoom} />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url={`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`}

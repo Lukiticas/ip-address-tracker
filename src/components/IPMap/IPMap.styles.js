@@ -6,7 +6,7 @@ const MapSection = styled.section`
     width: 100%;
 
     @media screen and (max-width: 700px) {
-      min-height: 150vh;
+      min-height: 100vh;
     }
   }
 `;

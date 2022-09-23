@@ -1,8 +1,8 @@
 export default {
   title: "dark",
   colors: {
-    clr400: "#041014",
-    clr600: "#d06dff",
+    clr400: "#191A19",
+    clr600: "#5977e0",
     clr800: "#ffffff",
   },
   font: {
