@@ -10,7 +10,7 @@ const HeaderSection = styled.section`
 
   min-height: 8em;
   width: 100%;
-  max-width: 80rem;
+  max-width: 75rem;
 
   font-family: ${(props) => props.theme.font.family};
 
@@ -40,8 +40,8 @@ const HeaderSectionDiv = styled.div`
     &:after {
       content: "";
       position: absolute;
-      height: 90%;
-      width: 0.1em;
+      height: 70%;
+      width: 0.01em;
       background-color: ${(props) => props.theme.colors.clr600};
       top: 10%;
       right: -0.9em;
@@ -71,7 +71,7 @@ const HeaderSIp = styled.p`
   max-width: 18ch;
   font-size: 1.8em;
   line-height: 1.6;
-  font-weight: 600;
+  font-weight: 500;
   color: ${(props) => props.theme.colors.clr800};
 
   @media screen and (max-width: 700px) {
