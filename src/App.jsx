@@ -68,11 +68,11 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
 
-      <div className="App">
+      <main className="App">
         <Header data={data} handleChangeData={requestAPI} />
         <IPMap coords={data.location} zoom={data.zoom} />
         <Toggle handleToggle={toggleTheme} />
-      </div>
+      </main>
     </ThemeProvider>
   );
 };
