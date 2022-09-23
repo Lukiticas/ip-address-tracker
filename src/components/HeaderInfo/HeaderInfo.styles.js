@@ -18,9 +18,10 @@ const HeaderSection = styled.section`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   @media screen and (max-width: 700px) {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     grid-template-columns: 1fr;
     text-align: center;
+    width: clamp(7rem, 100%, 20rem);
   }
 `;
 
@@ -56,11 +57,17 @@ const HeaderSIh3 = styled.h2`
 `;
 
 const HeaderSIp = styled.p`
-  display: block;
+  overflow-wrap: break-word;
+  max-width: 10ch;
   font-size: 1.8em;
   line-height: 1.6;
   font-weight: 600;
+  margin: 0 auto;
   color: ${(props) => props.theme.colors.clr800};
+
+  @media screen and (max-width: 700px) {
+    font-size: 1.2em;
+  }
 `;
 
 export { HeaderSection, HeaderSectionDiv, HeaderSIh3, HeaderSIp };
