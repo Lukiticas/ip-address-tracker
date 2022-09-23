@@ -2,11 +2,15 @@ import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 import { MapSection } from "./IPMap.styles";
 import "leaflet/dist/leaflet.css";
 import * as L from "leaflet";
+import { useEffect } from "react";
 
 const MapControl = ({ coords, zoom }) => {
   const map = useMap();
-  map.setView(coords);
-  map.setZoom(zoom);
+  useEffect(() => {
+    map.setView(coords);
+    map.setZoom(zoom);
+  }, [coords, zoom]);
+
   return null;
 };
 
@@ -24,8 +28,8 @@ const IPMap = ({ coords, zoom }) => {
       <MapContainer
         className="country-map"
         center={[x, y]}
-        zoom={zoom}
         scrollWheelZoom={true}
+        zoom={3}
       >
         <MapControl coords={coords} zoom={zoom} />
         <TileLayer

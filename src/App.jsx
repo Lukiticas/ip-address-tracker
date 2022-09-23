@@ -16,12 +16,12 @@ const API_KEY = import.meta.env.VITE_GEOAPI_KEY;
 const App = () => {
   const [theme, setTheme] = usePersistedState("theme", light);
   const [data, setData] = useState({
-    ip: "Your Ip",
+    ip: "Made by Lucas",
     location: [35.652832, 139.839478],
     name: "Tokyo",
-    timezone: "",
-    isp: "",
-    zoom: 3,
+    timezone: "GMT+9",
+    isp: "Sakura Fiber",
+    zoom: 15,
   });
 
   const requestAPI = async (ip) => {
