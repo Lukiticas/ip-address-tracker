@@ -1,8 +1,11 @@
 export default {
   title: "dark",
   colors: {
-    bgPrimary: "hsl(207, 26%, 17%)",
-    bgSecundary: "hsl(209, 23%, 22%)",
-    wordPrimary: "hsl(0, 0%, 100%)",
+    clr400: "#041014",
+    clr600: "#d06dff",
+    clr800: "#ffffff",
+  },
+  font: {
+    family: "'Rubik', sans-serif",
   },
 };
