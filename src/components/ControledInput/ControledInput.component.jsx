@@ -39,6 +39,7 @@ const ControledInput = ({ handleChangeData, ...args }) => {
   };
 
   const handleSubmit = (evt) => {
+    evt.preventDefault();
     if (inputValue.length || inputValue.length > 3) {
       const data = new FormData(evt.target).get("IP");
       requestAPI(data);
